@@ -45,16 +45,10 @@ public class Executor
      * @param args
      */
     public static void main(String[] args) {
-        if (args.length < 4) {
-            System.err
-                    .println("USAGE: Executor host:Port znode filename program [args ...]");
-            System.exit(2);
-        }
-        String hostPort = args[0];
-        String znode = args[1];
-        String filename = args[2];
-        String exec[] = new String[args.length - 3];
-        System.arraycopy(args, 3, exec, 0, exec.length);
+        String hostPort = "localhost:2181";
+        String znode = "/hello";
+        String filename = "output.txt";
+        String exec[] = new String[]{"ls"};
         try {
             new Executor(hostPort, znode, filename, exec).run();
         } catch (Exception e) {
@@ -79,6 +73,7 @@ public class Executor
                 }
             }
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -107,6 +102,7 @@ public class Executor
                     os.write(b, 0, rc);
                 }
             } catch (IOException e) {
+                e.printStackTrace();
             }
 
         }
@@ -120,6 +116,7 @@ public class Executor
                 try {
                     child.waitFor();
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
             child = null;

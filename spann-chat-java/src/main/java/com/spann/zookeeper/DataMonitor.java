@@ -115,6 +115,7 @@ public class DataMonitor implements Watcher, StatCallback {
                 // callbacks will kick off any exception handling
                 e.printStackTrace();
             } catch (InterruptedException e) {
+                e.printStackTrace();
                 return;
             }
         }
