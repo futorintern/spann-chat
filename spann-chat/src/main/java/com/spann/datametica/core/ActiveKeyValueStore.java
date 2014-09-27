@@ -40,13 +40,16 @@ public class ActiveKeyValueStore {
 
 	}
 
-	public String read(String path)
-			throws InterruptedException, KeeperException {
-		path = baseTopic+path;
-		List<String> childrens = zk.getChildren(path, Config.getConfig().myWatcher);
-		return childrens.toString();
-//		byte[] data = zk.getData(path, watcher, null/* stat */);
-//		return new String(data, CHARSET);
+	public String read(String path) {
+		try {
+			path = baseTopic+path;
+			byte[] data = zk.getData(path, Config.getConfig().myWatcher, null);
+			return new String(data, CHARSET);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public List<String> getChildren() throws KeeperException, InterruptedException {

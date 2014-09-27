@@ -24,4 +24,8 @@ public class UserDao {
 		List<String> childrens = store.getChildren();
 		return childrens;
 	}
+	
+	public String getUser(User user) {
+		return store.read("/"+user.getEmail());
+	}
 }
