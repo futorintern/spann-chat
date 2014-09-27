@@ -1,4 +1,4 @@
-package com.spann.datametica;
+package com.spann.datametica.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
