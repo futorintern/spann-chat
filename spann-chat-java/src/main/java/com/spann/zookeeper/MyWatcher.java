@@ -1,12 +1,7 @@
 package com.spann.zookeeper;
 
-import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
-import org.apache.zookeeper.Watcher.Event;
-
-import com.spann.zookeeper.DataMonitor.DataMonitorListener;
 
 public class MyWatcher implements Watcher {
 	
