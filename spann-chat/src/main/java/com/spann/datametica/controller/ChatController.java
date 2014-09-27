@@ -21,6 +21,7 @@ public class ChatController {
 		user.setEmail(email);
 		user.setTopic(email);
 		user.setName(email);
+		user.setStatus("available");
 		
 		UserDao userDao = new UserDao();
 		userDao.loginUser(user);
