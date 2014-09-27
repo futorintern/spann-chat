@@ -1,6 +1,7 @@
 package com.spann.zookeeper;
 
 import java.nio.charset.Charset;
+import java.util.List;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
@@ -37,8 +38,10 @@ public class ActiveKeyValueStore {
 
 	public String read(String path, Watcher watcher)
 			throws InterruptedException, KeeperException {
-		byte[] data = zk.getData(path, watcher, null/* stat */);
-		return new String(data, CHARSET);
+		List<String> childrens = zk.getChildren(path, watcher);
+		return childrens.toString();
+//		byte[] data = zk.getData(path, watcher, null/* stat */);
+//		return new String(data, CHARSET);
 	}
 	
 }

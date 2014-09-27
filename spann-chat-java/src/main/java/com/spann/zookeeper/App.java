@@ -8,14 +8,15 @@ public class App {
 		// TODO Auto-generated method stub
 		
 		try {
-			String znode = "/top1";
+			String znode = "/hello";
 			
 			MyWatcher watcher = new MyWatcher(znode);
 			ZooKeeper zk = new ZooKeeper("localhost:2181", 3000, watcher);
 			
 			ActiveKeyValueStore akvs = new ActiveKeyValueStore(zk);
-			akvs.write(znode, "value");
-			akvs.read(znode, watcher);
+			//akvs.write(znode, "value");
+			
+			System.out.println(akvs.read(znode, watcher));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
